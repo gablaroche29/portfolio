@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useRef, useEffect } from "react"
 
 type WindowProps = {
@@ -7,79 +9,89 @@ type WindowProps = {
   children: React.ReactNode
 }
 
-export default function Window({ title, isOpen, onClose, children }: WindowProps) {
-  const windowRef = useRef<HTMLDivElement>(null)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [dragging, setDragging] = useState(false)
+export default function Window({
+  title,
+  isOpen,
+  onClose,
+  children,
+}: WindowProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [pos, setPos] = useState({ x: 0, y: 0 })
+  const [drag, setDrag] = useState(false)
   const [offset, setOffset] = useState({ x: 0, y: 0 })
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setDragging(true)
+  const onMouseDown = (e: React.MouseEvent) => {
+    setDrag(true)
     setOffset({
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
+      x: e.clientX - pos.x,
+      y: e.clientY - pos.y,
     })
   }
 
-  const handleMouseMove = (e: MouseEvent) => {
-    if (dragging) {
-      setPosition({
-        x: e.clientX - offset.x,
-        y: e.clientY - offset.y,
-      })
-    }
-  }
-
-  const handleMouseUp = () => setDragging(false)
-
   useEffect(() => {
-    if (isOpen && windowRef.current) {
-      const { innerWidth, innerHeight } = window
-      const rect = windowRef.current.getBoundingClientRect()
-      setPosition({
-        x: (innerWidth - rect.width) / 2,
-        y: (innerHeight - rect.height) / 2,
-      })
-    }
+    if (!isOpen || !ref.current) return
+    const { innerWidth, innerHeight } = window
+    const r = ref.current.getBoundingClientRect()
+    setPos({
+      x: (innerWidth - r.width) / 2,
+      y: (innerHeight - r.height) / 2,
+    })
   }, [isOpen])
 
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove)
-    window.addEventListener("mouseup", handleMouseUp)
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose()
-      }
+    const move = (e: MouseEvent) => {
+      if (!drag) return
+      setPos({ x: e.clientX - offset.x, y: e.clientY - offset.y })
     }
-    window.addEventListener("keydown", handleKeyDown)
+
+    const up = () => setDrag(false)
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && onClose()
+
+    window.addEventListener("mousemove", move)
+    window.addEventListener("mouseup", up)
+    window.addEventListener("keydown", esc)
+
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      window.removeEventListener("mouseup", handleMouseUp)
-      window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener("mousemove", move)
+      window.removeEventListener("mouseup", up)
+      window.removeEventListener("keydown", esc)
     }
-  })
+  }, [drag, offset, onClose])
 
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50">
       <div
-        ref={windowRef}
-        className="border border-text bg-bg min-w-250 min-h-150 z-50 absolute"
-        style={{ left: position.x, top: position.y }}
+        ref={ref}
+        style={{ left: pos.x, top: pos.y }}
+        className="
+          absolute border border-text bg-bg
+          min-w-250 min-h-150 max-w-[90vw]
+        "
       >
-        <div 
-            className="flex items-center justify-between gap-2 px-3 h-8 border-b border-text bg-subtle"
-            onMouseDown={handleMouseDown}
+        <div
+          onMouseDown={onMouseDown}
+          className="
+            flex items-center justify-between
+            px-3 h-9
+            border-b border-text bg-subtle
+            cursor-move select-none
+          "
         >
-          <span className="ml-2 text-xs font-medium truncate">{title}.exe</span>
-          <div className="flex gap-1">
-            <span className="w-2 h-2 border border-text" />
-            <span className="w-2 h-2 border border-text" />
-            <span className="w-2 h-2 border border-text" />
-          </div>
+          <span className="text-xs font-mono tracking-wide">
+            {title}
+          </span>
+
+          <button
+            onClick={onClose}
+            className="text-xs hover:opacity-60"
+          >
+            ✕
+          </button>
         </div>
-        <div className="p-4">
+
+        <div className="p-6 overflow-y-auto max-h-[80vh]">
           {children}
         </div>
       </div>
