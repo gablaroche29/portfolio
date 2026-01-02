@@ -2,7 +2,7 @@ export default function Header() {
   return (
     <header className="border-b border-text">
       <div className="mx-auto max-w-content px-6 h-18 flex items-center justify-between">
-        <span className="font-medium">Gab</span>
+        <span className="font-medium">Gabriel</span>
 
         <nav className="flex gap-6 text-sm text-text">
           <a href="#work" className="hover:text-text">Work</a>
