@@ -1,9 +1,18 @@
 @import 'tailwindcss';
 
-body {
-  background-color: #ffffff;
-  color: #1e1e1e;
+@theme {
+  --color-bg: #e8e8e8;
+  --color-text: #1e1e1e;
+  --color-muted: #6b6b6b;
+  --color-border: #e5e5e5;
+  --color-subtle: #f7f7f7;
 }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
 html {
   scroll-behavior: smooth;
 }

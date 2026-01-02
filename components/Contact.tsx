@@ -1,9 +1,9 @@
+import SectionHeader from "./SectionHeader";
+
 export default function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-content px-6 py-6">
-      <h2 className="text-2xl font-semibold mb-6">
-        Let’s talk
-      </h2>
+      <SectionHeader title="Let’s talk" />
 
       <a
         href="mailto:youremail@example.com"

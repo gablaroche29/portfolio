@@ -1,11 +1,10 @@
 import ProjectCard from "./ProjectCard"
+import SectionHeader from "./SectionHeader"
 
 export default function Projects() {
   return (
     <section id="work" className="mx-auto max-w-content px-6 py-6">
-      <h2 className="text-2xl font-semibold mb-12">
-        Selected Work
-      </h2>
+      <SectionHeader title="Selected Work" />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <ProjectCard
