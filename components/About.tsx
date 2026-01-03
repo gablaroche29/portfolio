@@ -22,12 +22,12 @@ export default function About() {
           </p>
         </div>
 
-        <div className="border border-text p-6 bg-text/5 relative">
-          <div className="absolute top-0 right-0 p-2 text-[10px] font-mono opacity-30">DATA_RECAP</div>
+        <div className="border border-text p-6 relative">
+          <div className="absolute top-0 right-0 p-2 text-[10px] font-mono opacity-70">DATA_RECAP</div>
           <div className="space-y-4">
             {bioStats.map((stat, i) => (
               <div key={i} className="flex justify-between border-b border-text/10 pb-2">
-                <span className="text-[10px] font-mono uppercase text-text/50">{stat.label}</span>
+                <span className="text-[10px] font-mono uppercase text-text/70">{stat.label}</span>
                 <span className="text-sm font-mono font-bold tracking-tighter">{stat.value}</span>
               </div>
             ))}
