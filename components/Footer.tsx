@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 export default function Footer() {
   const [time, setTime] = useState("")
 
-  // Update time to look like a system clock
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date()
@@ -15,10 +14,8 @@ export default function Footer() {
 
   return (
     <footer className="border-t-2 border-text bg-bg font-mono mt-20">
-      {/* Top Section: Navigation and Stats */}
       <div className="mx-auto max-w-content px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
         
-        {/* Column 1: Directory */}
         <div className="space-y-4">
           <div className="text-[10px] uppercase tracking-[0.3em] opacity-40">[ Directory ]</div>
           <nav className="flex flex-col gap-2 uppercase text-sm font-bold">
@@ -28,7 +25,6 @@ export default function Footer() {
           </nav>
         </div>
 
-        {/* Column 2: System Specs */}
         <div className="space-y-4">
           <div className="text-[10px] uppercase tracking-[0.3em] opacity-40">[ Build_Specs ]</div>
           <div className="text-[11px] space-y-1 uppercase leading-tight">
@@ -47,7 +43,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Column 3: Live Output */}
         <div className="space-y-4">
           <div className="text-[10px] uppercase tracking-[0.3em] opacity-40">[ Local_Time ]</div>
           <div className="p-3 border border-text bg-text text-bg text-sm text-center">
@@ -61,7 +56,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar: Copyright and License */}
       <div className="border-t border-text/20 px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="flex items-center gap-4">
             {/* Minimal Logo */}
@@ -79,7 +73,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Terminal Bottom Accent */}
       <div className="h-1 bg-text w-full" />
     </footer>
   )
