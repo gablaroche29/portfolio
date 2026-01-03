@@ -5,7 +5,7 @@ import { projects } from "@/data/projects"
 export default function Projects() {
   return (
     <section id="work" className="mx-auto max-w-content px-6 py-6">
-      <SectionHeader title="Selected Work" />
+      <SectionHeader title="01_Selected_Work" />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {projects.map(project => (

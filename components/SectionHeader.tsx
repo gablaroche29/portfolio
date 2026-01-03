@@ -4,7 +4,7 @@ type Props = {
 
 export default function SectionHeader({ title }: Props) {
   return (
-    <div className="flex items-center gap-4 mb-4 mt-8">
+    <div className="flex items-center gap-4 my-8">
       <span className="text-xs uppercase tracking-wide">
         / {title}
       </span>
