@@ -19,7 +19,7 @@ export default function SkillGrid() {
                 <div className="w-2 h-2 bg-text group-hover:bg-bg transition-colors" />
               </div>
               
-              <h3 className="text-xl font-black mb-2 uppercase">{skill.name}</h3>
+              <h3 className="text-2xl font-semibold leading-tight mb-2 uppercase">{skill.name}</h3>
               <p className="text-sm opacity-70 mb-4">{skill.description}</p>
               
               <div className="mt-auto pt-4 border-t border-text/10 group-hover:border-white/20 text-[10px] uppercase tracking-widest">
