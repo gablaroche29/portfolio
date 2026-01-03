@@ -85,7 +85,7 @@ export default function Window({
 
           <button
             onClick={onClose}
-            className="text-xs hover:opacity-60"
+            className="text-sm hover:opacity-60 cursor-pointer"
           >
             ✕
           </button>
