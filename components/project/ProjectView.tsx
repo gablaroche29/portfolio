@@ -1,16 +1,13 @@
-import { projects } from "@/data/projects"
+import { Project } from "@/data/projects"
 import SectionHeader from "@/components/SectionHeader"
 import Image from "next/image"
 
-type Props = { id: string }
 
-export default function ProjectView({ id }: Props) {
-  const project = projects.find(p => p.id === id)
+export default function ProjectView(project: Project) {
   if (!project) return <p className="font-mono text-red-500 underline">ERROR: 404_PROJECT_NOT_FOUND</p>
 
   return (
     <div className="space-y-12 font-mono">
-      {/* Hero Section */}
       <section className="space-y-4">
         <div className="inline-block px-2 py-0.5 border border-text text-[10px] uppercase font-bold">
           Type: {project.type}

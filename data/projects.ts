@@ -1,5 +1,4 @@
 export type Project = {
-  id: string;
   title: string;
   description: string;
   subtitle: string;
@@ -22,7 +21,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: 'top-down-dungeon-prototype',
     title: 'Top-Down Dungeon Prototype',
     description: 'Combat-focused action RPG prototype built in Godot.',
     subtitle: 'Combat-focused action RPG prototype exploring enemy behavior and system-driven difficulty.',
@@ -48,7 +46,6 @@ export const projects: Project[] = [
       'This project strengthened my understanding of combat feedback loops and reinforced the importance of clarity in enemy behavior.',
   },
   {
-    id: 'minimal-portfolio-platform',
     title: 'Minimal Portfolio Platform',
     description: 'Monochrome portfolio inspired by Stripe.dev.',
     subtitle: 'High-performance web architecture focusing on typography and whitespace.',
@@ -68,7 +65,6 @@ export const projects: Project[] = [
     outcome: 'Achieved a 100/100 Lighthouse score while maintaining a unique, high-contrast aesthetic.',
   },
   {
-    id: 'enemy-ai-experiment',
     title: 'Enemy AI Experiment',
     description: 'State machines and combat behaviors for action games.',
     subtitle: 'Exploring Finite State Machines (FSM) to create challenging NPC encounters.',
@@ -85,7 +81,6 @@ export const projects: Project[] = [
     outcome: 'Developed a reusable AI framework that reduced NPC setup time by 40% in subsequent projects.',
   },
   {
-    id: 'ui-system-for-indie-games',
     title: 'UI System for Indie Games',
     description: 'Reusable UI rules and layouts for game menus.',
     subtitle: 'A standardized design system for game interfaces across different resolutions.',

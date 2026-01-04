@@ -3,20 +3,9 @@
 import { useState } from "react"
 import Window from "../Window"
 import ProjectView from "./ProjectView"
+import { Project } from "@/data/projects"
 
-type Props = {
-  id: string
-  title: string
-  description: string
-  type: string
-}
-
-export default function ProjectCard({
-  id,
-  title,
-  description,
-  type,
-}: Props) {
+export default function ProjectCard(project: Project) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -28,6 +17,7 @@ export default function ProjectCard({
           transition-all duration-200
           hover:shadow-[4px_4px_0px_0px_rgba(var(--text-rgb),1)]
           active:translate-x-0.5 active:translate-y-0.5 active:shadow-none
+          min-h-56.25
         "
       >
         <div className="flex items-center justify-between px-3 h-9 border-b border-text bg-text text-bg transition-colors group-hover:bg-bg group-hover:text-text">
@@ -36,7 +26,7 @@ export default function ProjectCard({
                 <div className="w-1 h-1 bg-bg group-hover:bg-text" />
             </div>
             <span className="text-[10px] font-mono uppercase tracking-widest font-bold">
-              {type}.exe
+              {project.type}.exe
             </span>
           </div>
           <div className="flex gap-1.5">
@@ -44,35 +34,37 @@ export default function ProjectCard({
           </div>
         </div>
 
-        <div className="p-5 space-y-4">
-          <div className="space-y-1">
-            <h3 className="text-xl font-bold uppercase leading-none tracking-tighter">
-              {title}
-            </h3>
-            <div className="h-0.5 w-8 bg-text group-hover:w-full transition-all duration-500" />
+        <div className="p-5 flex flex-col h-[calc(100%-2.25rem)]">
+          <div className="space-y-4">
+            <div className="space-y-1">
+              <h3 className="text-xl font-bold uppercase leading-none tracking-tighter">
+                {project.title}
+              </h3>
+              <div className="h-0.5 w-8 bg-text group-hover:w-full transition-all duration-500" />
+            </div>
+            
+            <p className="text-sm text-text/80 leading-snug font-mono line-clamp-3 italic">
+              {`// ${project.description}`}
+            </p>
           </div>
-          
-          <p className="text-sm text-text/80 leading-snug font-mono line-clamp-3 italic">
-            {`// ${description}`}
-          </p>
 
-          <div className="flex justify-between items-center pt-2">
-             <span className="text-[9px] uppercase opacity-50 font-mono">
+          <div className="flex justify-between items-center pt-4 mt-auto">
+            <span className="text-[9px] uppercase opacity-50 font-mono">
                 Click to Initialize
-             </span>
-             <span className="text-xs group-hover:translate-x-1 transition-transform">
+            </span>
+            <span className="text-xs group-hover:translate-x-1 transition-transform">
                 →
-             </span>
+            </span>
           </div>
         </div>
       </div>
 
       <Window
-        title={title}
+        title={project.title}
         isOpen={open}
         onClose={() => setOpen(false)}
       >
-        <ProjectView id={id} />
+        <ProjectView {...project} />
       </Window>
     </>
   )
