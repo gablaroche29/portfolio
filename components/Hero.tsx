@@ -1,14 +1,15 @@
 "use client"
 import { useEffect, useState } from "react";
+import HeroVisual from "./HeroVisual";
 
 export default function Hero() {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const fullText = "I design and build interactive systems.";
+  const fullText = "Gabriel"; 
   const [loopNum, setLoopNum] = useState(0);
   
-  const typingSpeed = 60;
-  const pauseDuration = 4000;
+  const typingSpeed = 150;
+  const pauseDuration = 3000;
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -24,61 +25,58 @@ export default function Hero() {
     } else if (isDeleting && text.length > 0) {
       timer = setTimeout(() => {
         setText(fullText.slice(0, text.length - 1));
-      }, 20);
-    } else {
+      }, 50);
+    } else if (isDeleting && text.length === 0) {
       timer = setTimeout(() => {
         setIsDeleting(false);
         setLoopNum((prev) => prev + 1);
-      }, 500); 
+      }, 500);
     }
 
     return () => clearTimeout(timer);
   }, [text, isDeleting, fullText]);
 
   return (
-    <section className="relative mx-auto max-w-content px-6 py-20 md:py-32 overflow-hidden border-b border-text">
-      <div className="absolute mr-10 right-0 top-[-5%] text-[25rem] font-black opacity-[0.03] select-none pointer-events-none leading-none tracking-tighter">
-        G
-      </div>
-
-      <div className="relative z-10 space-y-6">
+    <section className="relative mx-auto max-w-content px-6 py-20 md:py-32 overflow-hidden border-b border-text flex flex-col md:flex-row items-center gap-12">
+      
+      <div className="relative z-10 flex-1 space-y-6">
         <div className="inline-flex items-center gap-2 px-3 py-1 border border-text text-[10px] uppercase tracking-[0.3em] mb-4">
           <span className="w-2 h-2 bg-text animate-pulse" />
           [ System Status: {isDeleting ? "Reloading" : "Running"} ]
         </div>
 
-        <h1 className="text-5xl md:text-8xl font-black leading-[1.1] md:leading-none uppercase tracking-tighter min-h-[3.3em] md:min-h-[3em]">
-          Hi, I’m Gabriel.<br />
+        <h1 className="text-6xl md:text-9xl font-black leading-none uppercase tracking-tighter min-h-[1.2em]">
+          Hi, I’m <br className="md:hidden" />
           <span 
             className="text-outline-text transition-all duration-75"
-            style={{ 
-                WebkitTextStroke: '1.5px black',
-                color: isDeleting ? 'black' : 'transparent' 
-            }}
+            style={{ WebkitTextStroke: '2px black', color: isDeleting ? 'black' : 'transparent' }}
           >
             {text}
           </span>
-          <span className={`inline-block w-3 h-10 md:w-5 md:h-16 bg-text ml-2 align-middle ${isDeleting ? 'animate-none opacity-20' : 'animate-pulse'}`} />
+          <span className={`inline-block w-3 h-10 md:w-6 md:h-20 bg-text ml-2 align-middle ${isDeleting ? 'animate-none opacity-20' : 'animate-pulse'}`} />
         </h1>
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-12">
-          <div className="max-w-xl space-y-4">
-            <p className="text-lg md:text-xl font-mono leading-relaxed italic">
-              {`> Web and game developer focused on gameplay systems, UI clarity, and technical design.`}
-            </p>
-            <div className="h-px w-full bg-text/20 relative overflow-hidden">
-                <div 
-                    className="absolute inset-0 bg-text transition-all duration-300" 
-                    style={{ width: `${(text.length / fullText.length) * 100}%` }} 
-                />
-            </div>
-          </div>
-          
-          <div className="flex flex-col gap-2 text-[10px] font-mono uppercase opacity-60">
-            <span>Location: Sorel-Tracy, QC</span>
-            <span>Status: Available for hire</span>
-            <span>Cycle: {loopNum}</span>
-          </div>
+        <p className="text-lg md:text-xl font-mono leading-relaxed italic max-w-xl border-t border-text/10 pt-6">
+          {`> Web and game developer focused on gameplay systems, UI clarity, and technical design.`}
+        </p>
+      </div>
+
+      <div className="relative w-full md:w-100 aspect-square flex items-center justify-center">
+        <div className="absolute inset-0 border border-text/20 pointer-events-none">
+            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-text" />
+            <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-text" />
+            <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-text" />
+            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-text" />
+        </div>
+        
+        <div className="absolute top-4 left-4 text-[9px] font-mono opacity-40 uppercase leading-tight">
+            Object: Core_Node_01<br/>
+            Render: Wireframe_Active<br/>
+            Cycle: {loopNum}
+        </div>
+
+        <div className="w-full h-full opacity-90 contrast-125">
+            <HeroVisual />
         </div>
       </div>
     </section>
