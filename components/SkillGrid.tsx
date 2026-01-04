@@ -10,21 +10,27 @@ export default function SkillGrid() {
           {skills.map((skill, idx) => (
             <div 
               key={idx}
-              className="group border-r border-b border-text p-6 transition-colors duration-300 hover:bg-text hover:text-bg cursor-crosshair"
+              className="group border-r border-b border-text p-6 transition-colors duration-300 hover:bg-text hover:text-bg cursor-crosshair flex flex-col justify-between min-h-56.25"
             >
-              <div className="flex justify-between items-start mb-8">
-                <span className="text-xs border border-text group-hover:border-bg px-2 py-1">
-                  0{idx + 1}
-                </span>
-                <div className="w-2 h-2 bg-text group-hover:bg-bg transition-colors" />
+              <div className="space-y-8">
+                <div className="flex justify-between items-start">
+                  <span className="text-xs border border-text group-hover:border-bg px-2 py-1 font-mono">
+                    0{idx + 1}
+                  </span>
+                  <div className="w-2 h-2 bg-text group-hover:bg-bg transition-colors" />
+                </div>
+                
+                <div>
+                  <h3 className="text-2xl font-black leading-tight mb-2 uppercase tracking-tighter">
+                    {skill.name}
+                  </h3>
+                  <p className="text-xs font-mono opacity-70 leading-relaxed uppercase">
+                    {`// ${skill.description}`}
+                  </p>
+                </div>
               </div>
               
-              <h3 className="text-2xl font-semibold leading-tight mb-2 uppercase">{skill.name}</h3>
-              <p className="text-sm opacity-70 mb-4">{skill.description}</p>
-              
-              <div className="mt-auto pt-4 border-t border-text/10 group-hover:border-white/20 text-[10px] uppercase tracking-widest">
-                Status: {skill.level}
-              </div>
+              <span className="pt-4 border-t border-text/10 group-hover:border-bg/20 text-[10px] font-mono uppercase tracking-widest">Lvl: {skill.level}</span>
             </div>
           ))}
         </div>
