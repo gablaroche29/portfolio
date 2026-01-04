@@ -3,6 +3,7 @@ import Projects from "@/components/project/Projects"
 import About from "@/components/About"
 import Contact from "@/components/Contact"
 import SkillGrid from "@/components/SkillGrid"
+import EventLog from "@/components/EventLog"
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <Projects />
       <SkillGrid />
+      <EventLog />
       <About />
       <Contact />
     </>

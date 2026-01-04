@@ -3,7 +3,7 @@ import { skills } from "@/data/skills";
 
 export default function SkillGrid() {
   return (
-    <section id="skill" className="max-w-content mx-auto px-6 py-6">
+    <section id="skill" className="max-w-content mx-auto px-6 py-20">
         <SectionHeader title="02_Technical_Stack" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-l border-text">
