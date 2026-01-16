@@ -3,7 +3,6 @@ import "./globals.css";
 import CommandPalette from "@/components/CommandPalette";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "Gabriel — Developer",
@@ -17,7 +16,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <CommandPalette />
         <main>{children}</main>
-        <ScrollToTop />
         <Footer />
       </body>
     </html>
