@@ -17,7 +17,7 @@ export default function SkillGrid() {
 
   return (
     <section id="skill" className="max-w-content mx-auto px-6 py-20">
-      <SectionHeader title="02_Technical_Stack" />
+      <SectionHeader title="02_Compétences" />
 
       <div className="flex flex-wrap gap-4 mb-10">
         {["All", ...Array.from(new Set(skills.map((s) => s.category)))].map((cat) => (

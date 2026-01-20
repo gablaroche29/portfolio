@@ -9,7 +9,7 @@ const events = [
 export default function EventLog() {
   return (
     <section id="events" className="mx-auto max-w-content px-6 py-20 border-b border-text/20">
-      <SectionHeader title="03_Activity_Log" />
+      <SectionHeader title="03_Évènements" />
       
       <div className="mt-8 space-y-0 border-l border-text/20 ml-4">
         {events.map((event, i) => (

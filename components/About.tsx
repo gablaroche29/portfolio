@@ -10,7 +10,7 @@ export default function About() {
 
   return (
     <section id="about" className="mx-auto max-w-content px-6 py-20">
-      <SectionHeader title="04_System_Profile" />
+      <SectionHeader title="04_À_Propos" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8">
         <div className="space-y-6">

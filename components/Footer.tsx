@@ -19,9 +19,11 @@ export default function Footer() {
         <div className="space-y-4">
           <div className="text-[10px] uppercase tracking-[0.3em] opacity-40">[ Directory ]</div>
           <nav className="flex flex-col gap-2 uppercase text-sm font-bold">
-            <a href="#work" className="hover:underline underline-offset-4 w-fit tracking-tighter">01_Work</a>
-            <a href="#about" className="hover:underline underline-offset-4 w-fit tracking-tighter">02_About</a>
-            <a href="#contact" className="hover:underline underline-offset-4 w-fit tracking-tighter">03_Contact</a>
+            <a href="#work" className="hover:underline underline-offset-4 w-fit tracking-tighter">01_Projets</a>
+            <a href="#skill" className="hover:underline underline-offset-4 w-fit tracking-tighter">02_Compétences</a>
+            <a href="#events" className="hover:underline underline-offset-4 w-fit tracking-tighter">03_Évènements</a>
+            <a href="#about" className="hover:underline underline-offset-4 w-fit tracking-tighter">04_À_Propos</a>
+            <a href="#contact" className="hover:underline underline-offset-4 w-fit tracking-tighter">05_Contact</a>
           </nav>
         </div>
 

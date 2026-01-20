@@ -19,7 +19,7 @@ export default function Projects() {
 
   return (
     <section id="work" className="mx-auto max-w-content px-6 py-20">
-      <SectionHeader title="01_Selected_Work" />
+      <SectionHeader title="01_Projets" />
 
       <div className="flex flex-wrap gap-4 mb-10">
         {categories.map((cat) => (

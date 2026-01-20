@@ -9,7 +9,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="mx-auto max-w-content px-6 py-20 bg-bg">
-      <SectionHeader title="05_Transmission" />
+      <SectionHeader title="05_Contact" />
 
       <div className="group relative">        
         <div className="relative border-2 border-text p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden">
