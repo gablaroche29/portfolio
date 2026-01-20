@@ -45,19 +45,19 @@ export default function Hero() {
           [ System Status: {isDeleting ? "Reloading" : "Running"} ]
         </div>
 
-        <h1 className="text-6xl md:text-9xl font-black leading-none uppercase tracking-tighter min-h-[1.2em]">
+        <h1 className="flex flex-col text-6xl md:text-9xl font-black leading-none uppercase tracking-tighter min-h-[1.2em]">
           Hi, I’m <br className="md:hidden" />
           <span 
             className="text-outline-text transition-all duration-75"
             style={{ WebkitTextStroke: '2px black', color: isDeleting ? 'black' : 'transparent' }}
           >
             {text}
+            <span className={`inline-block w-3 h-10 md:w-6 md:h-20 bg-text ml-2 align-middle ${isDeleting ? 'animate-none opacity-20' : 'animate-pulse'}`} />
           </span>
-          <span className={`inline-block w-3 h-10 md:w-6 md:h-20 bg-text ml-2 align-middle ${isDeleting ? 'animate-none opacity-20' : 'animate-pulse'}`} />
         </h1>
 
         <p className="text-lg md:text-xl font-mono leading-relaxed italic max-w-xl border-t border-text/10 pt-6">
-          {`> Web and game developer focused on gameplay systems, UI clarity, and technical design.`}
+          {`> Étudiant en développement informatique, passionné par la création de projets, autant en développement web qu'en jeu vidéo.`}
         </p>
       </div>
 
