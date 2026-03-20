@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -27,3 +28,20 @@ jobs:
 
       - name: Build Next.js app
         run: npm run build
+  deploy:
+    name: Deploy
+    needs: build
+    
+    permissions:
+        pages: write
+        id-token: write
+    
+    environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
