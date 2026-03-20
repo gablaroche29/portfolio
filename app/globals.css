@@ -29,3 +29,25 @@ body::before {
   background-size: 100% 3px, 3px 100%;
   pointer-events: none;
 }
+
+@media print {
+  body {
+    background: white !important;
+  }
+
+  /* Use backslashes to escape Tailwind's special characters */
+  .shadow-\[12px_12px_0px_0px_rgba\(var\(--text-rgb\)\,1\)\] {
+    box-shadow: none !important;
+  }
+
+  .border-2 {
+    border-width: 1px !important;
+  }
+
+  /* Hide navigation and return buttons */
+  nav,
+  header + div,
+  a[href='/'] {
+    display: none !important;
+  }
+}
